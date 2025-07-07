@@ -45,7 +45,7 @@ def compare_hashes(old, new):
     for path in new:
         if path not in old:
             added.append(path)
-    return added, deleted, modified, unchanged
+    return added, deleted, modified
 
 def log_report(added, deleted, modified):
     now = datetime.now().strftime("%d-%m-%Y  %H:%M:%S")
