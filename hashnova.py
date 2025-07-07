@@ -36,20 +36,18 @@ def load_hashes(filename):
         return json.load(f)
     
 def compare_hashes(old, new):
-    added, deleted, modified, unchanged = [], [], [], []
+    added, deleted, modified = [], [], []
     for path in old:
         if path not in new:
             deleted.append(path)
         elif old[path] != new[path]:
             modified.append(path)
-        else:
-            unchanged.append(path)
     for path in new:
         if path not in old:
             added.append(path)
     return added, deleted, modified, unchanged
 
-def log_report(added, deleted, modified, unchanged):
+def log_report(added, deleted, modified):
     now = datetime.now().strftime("%d-%m-%Y  %H:%M:%S")
     print(f"{Style.BRIGHT}\n[File Change Report - {now}]{Style.RESET_ALL}")
     if not (added or deleted or modified):
@@ -67,11 +65,7 @@ def log_report(added, deleted, modified, unchanged):
         print(f"{Fore.YELLOW}\n[*] Modified Files:{Style.RESET_ALL}")
         for files in modified:
             print(f"{Fore.YELLOW} {files}{Style.RESET_ALL}")
-    if unchanged:
-        print(f"{Fore.GREEN}\n[=] Unchanged Files:{Style.RESET_ALL}")
-        for files in unchanged:
-            print(f"{Fore.GREEN} {files}{Style.RESET_ALL}")
-
+    
 def main():
     parser = argparse.ArgumentParser(description="File Integrity Checker using SHA 256.")
     parser.add_argument("-d", "--directory", required=True, help="Target directory to monitor")
@@ -92,9 +86,9 @@ def main():
     old_snapshot = load_hashes(snapshot_file)
     new_snapshot = get_file_hashes(tar_dir)
 
-    added, deleted, modified, unchanged = compare_hashes(old_snapshot, new_snapshot)
+    added, deleted, modified = compare_hashes(old_snapshot, new_snapshot)
 
-    log_report(added, deleted, modified, unchanged)
+    log_report(added, deleted, modified)
 
     save_hashes(new_snapshot, snapshot_file)
 
