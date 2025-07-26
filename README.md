@@ -1,3 +1,17 @@
+COMPANY: CODTECH IT SOLUTIONS
+
+NAME: Abinesh M
+
+INTERN ID: CT04DH572
+
+DOMAIN: Cybersecurity & Ethical Hacking
+
+DURATION: 4 Weeks
+
+MENTOR: NEELA SANTOSH
+
+---
+
 # 🔐 HashNova - File Integrity Checker
 
 **HashNova** is a simple and powerful Python-based tool that monitors file changes (added, deleted, modified) using SHA-256 hashing.
