@@ -77,3 +77,5 @@ Abinesh M
 GitHub: @abxploit
 
 ---
+## ✅ Conclusion:
+HashNova is a testament to simplicity, power, and practicality. It fills the gap between bloated GUI hashing tools and basic command-line utilities by offering a modern, well-structured, and extensible solution. Whether you are building a secure pipeline, conducting a forensic investigation, or simply verifying downloaded files, HashNova serves as a reliable companion in your cybersecurity toolkit
